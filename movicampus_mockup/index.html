@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MoviCampus – Mockup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- SVG de íconos reutilizables -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-bus" viewBox="0 0 24 24"><path d="M18 11H6V6h12m-1.5 11a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m-9 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3M4 16c0 .88.39 1.67 1 2.22V20a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1h8v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4S4 2.5 4 6z"/></symbol>
+  <symbol id="i-school" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17zM12 3 1 9l11 6 9-4.91V17h2V9z"/></symbol>
+  <symbol id="i-edit" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75z"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6zM19 4h-3.5l-1-1h-5l-1 1H5v2h14z"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></symbol>
+  <symbol id="i-route" viewBox="0 0 24 24"><path d="M9 3 3 9h4v8a3 3 0 0 0 3 3h4v-2h-4a1 1 0 0 1-1-1V9h4zm8 6a2 2 0 1 0 0 4 2 2 0 0 0 0-4m0 6-4 6h8z"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M12 22a2 2 0 0 0 2-2h-4a2 2 0 0 0 2 2m6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4a1.5 1.5 0 0 0-3 0v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1z"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8m0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4"/></symbol>
+</svg>
+
+<!-- Barra superior (PC) – visible solo en pantallas internas -->
+<header class="topbar" id="topbar" hidden>
+  <div class="topbar__inner">
+    <a class="topbar__brand" href="#panel">MoviCampus</a>
+    <nav class="topbar__nav" aria-label="Navegación principal">
+      <a href="#panel" data-nav="panel">Panel</a>
+      <a href="#gestion" data-nav="gestion">Administrar</a>
+      <a href="#reportes" data-nav="reportes">Reportes</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- 01 · LOGIN (HU-05) -->
+  <section class="screen screen--center" id="s-login" aria-labelledby="t-login">
+    <div class="container">
+      <div class="brand"><span class="avatar"><svg class="ic ic--white"><use href="#i-bus"/></svg></span><h1 id="t-login" class="brand__name">MoviCampus</h1></div>
+      <p class="lead">Inicia sesión con tu cuenta institucional</p>
+      <form class="stack" data-go="panel" novalidate>
+        <input class="input" type="email" placeholder="correo@iberoamericana.edu.co" aria-label="Correo institucional" autocomplete="username">
+        <input class="input" type="password" placeholder="Contraseña" aria-label="Contraseña" autocomplete="current-password">
+        <button class="btn btn--primary" type="submit">Iniciar sesión</button>
+        <div class="row row--between">
+          <label class="check"><input type="checkbox"><span>Recordarme</span></label>
+          <a class="link" href="#login">¿Olvidaste tu contraseña?</a>
+        </div>
+        <button class="btn btn--outline" type="button" data-go="panel">Continuar con cuenta institucional <svg class="ic"><use href="#i-school"/></svg></button>
+        <p class="foot">¿No tienes cuenta? <a class="link" href="#registro">Regístrate</a></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- 02 · REGISTRO -->
+  <section class="screen screen--center" id="s-registro" aria-labelledby="t-registro">
+    <div class="container">
+      <div class="brand"><span class="avatar"><svg class="ic ic--white"><use href="#i-bus"/></svg></span><h1 id="t-registro" class="brand__name">Crear tu cuenta</h1></div>
+      <p class="lead">Regístrate con tu correo institucional</p>
+      <form class="stack" data-go="panel" novalidate>
+        <fieldset class="roles">
+          <legend>Soy</legend>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="rol" checked><span>Estudiante</span></label>
+            <label class="chip"><input type="radio" name="rol"><span>Docente</span></label>
+            <label class="chip"><input type="radio" name="rol"><span>Admin</span></label>
+          </div>
+        </fieldset>
+        <input class="input" type="text" placeholder="Nombre completo" aria-label="Nombre completo" autocomplete="name">
+        <input class="input" type="email" placeholder="Correo institucional" aria-label="Correo institucional" autocomplete="email">
+        <div>
+          <input class="input" type="password" placeholder="Contraseña" aria-label="Contraseña" autocomplete="new-password" aria-describedby="hint-pass">
+          <p class="hint" id="hint-pass">Mínimo 8 caracteres, una mayúscula y un número</p>
+        </div>
+        <input class="input" type="password" placeholder="Confirmar contraseña" aria-label="Confirmar contraseña" autocomplete="new-password">
+        <div class="row row--between">
+          <label class="check"><input type="checkbox"><span>Acepto los términos y condiciones</span></label>
+          <a class="link" href="#registro">Ver Términos</a>
+        </div>
+        <button class="btn btn--primary" type="submit">Crear cuenta</button>
+        <p class="foot"><a class="link" href="#login">¿Ya tienes cuenta? Inicia sesión</a></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- 03 · PANEL PRINCIPAL (HU-01, HU-02, HU-03) -->
+  <section class="screen" id="s-panel" aria-labelledby="t-panel">
+    <div class="container stack stack--lg">
+      <div class="brand"><span class="avatar"><svg class="ic ic--white"><use href="#i-bus"/></svg></span><h1 id="t-panel" class="brand__name brand__name--sm">Hola, Luis 👋</h1></div>
+
+      <form class="search-card" id="search" aria-label="Buscar rutas">
+        <h2 class="search-card__title">¿A dónde vas hoy?</h2>
+        <input class="input" type="text" id="origen" placeholder="Origen" aria-label="Origen">
+        <input class="input" type="text" id="destino" placeholder="Destino" aria-label="Destino">
+        <button class="btn btn--teal" type="submit">Buscar rutas</button>
+        <p class="search-card__msg" id="search-msg" role="status" hidden></p>
+      </form>
+
+      <div class="chips" role="group" aria-label="Filtrar por tipo de transporte" id="filters">
+        <button class="chip chip--btn is-active" data-filter="todos" aria-pressed="true">Todos</button>
+        <button class="chip chip--btn" data-filter="bus" aria-pressed="false">Bus</button>
+        <button class="chip chip--btn" data-filter="metro" aria-pressed="false">Metro</button>
+        <button class="chip chip--btn" data-filter="bici" aria-pressed="false">Bicicleta</button>
+      </div>
+
+      <div>
+        <h2 class="section-title">Rutas frecuentes</h2>
+        <ul class="cards" id="route-list">
+          <li class="card" data-type="metro bus"><strong>Ruta 1: Metro + bus</strong><span>42 min · costo medio</span></li>
+          <li class="card" data-type="bus"><strong>Ruta 2: bus directo</strong><span>28 min · costo bajo</span></li>
+          <li class="card" data-type="bici"><strong>Ruta 3: bicicleta + Metro</strong><span>35 min · sin costo</span></li>
+        </ul>
+        <p class="hint" id="empty-msg" hidden>No hay rutas para este filtro en el prototipo.</p>
+      </div>
+      <a class="link link--lg" href="#gestion">Administrar</a>
+    </div>
+  </section>
+
+  <!-- 04 · GESTIÓN DE INFORMACIÓN (HU-08) -->
+  <section class="screen" id="s-gestion" aria-labelledby="t-gestion">
+    <div class="container stack stack--lg">
+      <div class="brand"><span class="avatar"><svg class="ic ic--white"><use href="#i-bus"/></svg></span><h1 id="t-gestion" class="brand__name brand__name--sm">Gestión de rutas</h1></div>
+      <p class="lead lead--tight">Administra rutas, paradas y novedades</p>
+
+      <div class="stats">
+        <div class="stat"><strong>12</strong><span>Rutas</span></div>
+        <div class="stat"><strong>48</strong><span>Paradas</span></div>
+        <div class="stat"><strong>3</strong><span>Novedades</span></div>
+      </div>
+
+      <button class="btn btn--teal" type="button" data-dialog="Nueva ruta" data-field="Nombre de la ruta">+ Nueva ruta</button>
+
+      <div>
+        <h2 class="section-title">Rutas activas</h2>
+        <ul class="cards">
+          <li class="card card--manage">
+            <div class="card__top"><span>Ruta 1: Metro + bus</span><span class="muted">42 min</span></div>
+            <div class="card__bottom"><span class="status status--ok">Activa</span><span class="actions"><button class="icon-btn" aria-label="Editar Ruta 1"><svg class="ic ic--navy"><use href="#i-edit"/></svg></button><button class="icon-btn" aria-label="Eliminar Ruta 1"><svg class="ic ic--red"><use href="#i-trash"/></svg></button></span></div>
+          </li>
+          <li class="card card--manage">
+            <div class="card__top"><span>Ruta 2: Bus directo</span><span class="muted">28 min</span></div>
+            <div class="card__bottom"><span class="status status--ok">Activa</span><span class="actions"><button class="icon-btn" aria-label="Editar Ruta 2"><svg class="ic ic--navy"><use href="#i-edit"/></svg></button><button class="icon-btn" aria-label="Eliminar Ruta 2"><svg class="ic ic--red"><use href="#i-trash"/></svg></button></span></div>
+          </li>
+          <li class="card card--manage">
+            <div class="card__top"><span>Ruta 3: Metro + Tranvía</span><span class="muted">42 min</span></div>
+            <div class="card__bottom"><span class="status status--warn">Suspendida</span><span class="actions"><button class="icon-btn" aria-label="Editar Ruta 3"><svg class="ic ic--navy"><use href="#i-edit"/></svg></button><button class="icon-btn" aria-label="Eliminar Ruta 3"><svg class="ic ic--red"><use href="#i-trash"/></svg></button></span></div>
+          </li>
+        </ul>
+      </div>
+      <a class="btn btn--outline" href="#reportes">Ver Reportes</a>
+    </div>
+  </section>
+
+  <!-- 05 · REPORTES (HU-09, HU-07) -->
+  <section class="screen" id="s-reportes" aria-labelledby="t-reportes">
+    <div class="container stack stack--lg">
+      <div class="brand"><span class="avatar"><svg class="ic ic--white"><use href="#i-bus"/></svg></span><h1 id="t-reportes" class="brand__name brand__name--sm">Reportes</h1></div>
+      <p class="lead lead--tight">Uso de rutas y novedades</p>
+
+      <div class="chips" role="group" aria-label="Periodo" id="period">
+        <button class="chip chip--btn is-active" aria-pressed="true">Semana</button>
+        <button class="chip chip--btn" aria-pressed="false">Mes</button>
+        <button class="chip chip--btn" aria-pressed="false">Semestre</button>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><strong>245</strong><span>Consultas</span></div>
+        <div class="stat"><strong>12</strong><span>Rutas</span></div>
+        <div class="stat"><strong>3</strong><span>Novedades</span></div>
+      </div>
+
+      <section class="panel" aria-labelledby="t-chart">
+        <h2 class="panel__title" id="t-chart">Consultas por día</h2>
+        <div class="bars" role="img" aria-label="Consultas por día: lunes 72, martes 38, miércoles 56, jueves 27, viernes 52">
+          <div class="bar"><span class="bar__col bar__col--hi" style="height:108px"></span><span class="bar__lbl">Lun</span></div>
+          <div class="bar"><span class="bar__col" style="height:57px"></span><span class="bar__lbl">Mar</span></div>
+          <div class="bar"><span class="bar__col" style="height:84px"></span><span class="bar__lbl">Mié</span></div>
+          <div class="bar"><span class="bar__col" style="height:41px"></span><span class="bar__lbl">Jue</span></div>
+          <div class="bar"><span class="bar__col" style="height:78px"></span><span class="bar__lbl">Vie</span></div>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="t-rank">
+        <h2 class="panel__title" id="t-rank">Rutas más usadas</h2>
+        <ol class="rank">
+          <li><div class="rank__row"><span>Ruta 1: Metro + bus</span><strong>128</strong></div><div class="progress"><span style="width:100%"></span></div></li>
+          <li><div class="rank__row"><span>Ruta 2: Bus directo</span><strong>96</strong></div><div class="progress"><span style="width:75%"></span></div></li>
+          <li><div class="rank__row"><span>Ruta 3: Metro + Tranvía</span><strong>21</strong></div><div class="progress"><span style="width:16%"></span></div></li>
+        </ol>
+      </section>
+
+      <section class="panel" aria-labelledby="t-news">
+        <h2 class="panel__title" id="t-news">Novedades publicadas</h2>
+        <ul class="news">
+          <li><span class="dot dot--warn"></span><div><strong>Obras en Av. 80</strong><span>Activa · hace 2 h</span></div></li>
+          <li><span class="dot dot--warn"></span><div><strong>Retraso Ruta 1</strong><span>Activa · hace 5 h</span></div></li>
+          <li><span class="dot dot--ok"></span><div><strong>Ruta 3 restablecida</strong><span>Resuelta · ayer</span></div></li>
+        </ul>
+      </section>
+
+      <button class="btn btn--primary" type="button" data-dialog="Publicar novedad" data-field="Título de la novedad">Publicar novedad</button>
+    </div>
+  </section>
+
+</main>
+
+<!-- Barra inferior (móvil y tablet pequeña) -->
+<nav class="bottombar" id="bottombar" aria-label="Navegación inferior" hidden>
+  <a href="#panel" data-nav="panel"><svg class="ic"><use href="#i-home"/></svg>Inicio</a>
+  <a href="#gestion" data-nav="gestion"><svg class="ic"><use href="#i-route"/></svg>Rutas</a>
+  <a href="#reportes" data-nav="reportes"><svg class="ic"><use href="#i-bell"/></svg>Novedades</a>
+  <a href="#login"><svg class="ic"><use href="#i-user"/></svg>Perfil</a>
+</nav>
+
+<dialog id="dlg" aria-labelledby="dlg-title">
+  <form method="dialog" class="stack">
+    <h2 id="dlg-title">Nueva ruta</h2>
+    <input class="input" id="dlg-field" type="text" placeholder="" aria-label="Campo">
+    <div class="row row--end">
+      <button class="btn btn--outline btn--sm" value="cancel">Cancelar</button>
+      <button class="btn btn--primary btn--sm" value="ok">Guardar</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="script.js"></script>
+</body>
+</html>

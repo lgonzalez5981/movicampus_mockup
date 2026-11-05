@@ -1,0 +1,161 @@
+/* ===== MoviCampus · Mockup HTML/CSS =====
+   Los tokens replican los estilos del UI Kit de Figma. */
+:root{
+  --navy:#1F3A5F; --teal:#2A9D8F; --orange:#E76F51; --green:#2B9348; --red:#C92A2A; --gold:#E9C46A;
+  --bg:#F8F9FA; --card:#FFFFFF; --text:#212529; --text-2:#495057; --border:#DEE2E6;
+  --radius-sm:8px; --radius:12px; --radius-lg:16px;
+  --shadow:0 2px 8px rgba(0,0,0,.08);
+  --font:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --fs-h1:28px; --fs-h2:20px; --fs-body:15px; --fs-cap:12px;
+}
+*{box-sizing:border-box;margin:0}
+body{font-family:var(--font);font-size:var(--fs-body);color:var(--text);background:var(--bg);line-height:1.4;min-height:100vh}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+[hidden]{display:none!important}
+
+/* Íconos */
+.ic{width:24px;height:24px;fill:currentColor;flex:none}
+.ic--white{fill:#fff}.ic--navy{fill:var(--navy)}.ic--red{fill:var(--red)}
+
+/* Barra superior */
+.topbar{background:var(--navy);color:#fff;height:64px;position:sticky;top:0;z-index:5}
+.topbar__inner{max-width:1200px;margin:0 auto;height:100%;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+.topbar__brand{font-weight:700;font-size:20px}
+.topbar__nav{display:flex;gap:28px}
+.topbar__nav a{font-weight:600;font-size:18px;padding:6px 2px;border-bottom:2px solid transparent;opacity:.9}
+.topbar__nav a:hover{opacity:1}
+.topbar__nav a.is-current{border-bottom-color:var(--gold);opacity:1}
+
+/* Pantallas */
+.screen{display:none;padding:24px 24px 48px}
+.screen.is-active{display:block}
+.screen--center.is-active{display:flex;align-items:center;justify-content:center;min-height:100vh;padding-block:40px}
+.container{width:100%;max-width:1080px;margin:0 auto}
+.screen--center .container{max-width:520px}
+.stack{display:flex;flex-direction:column;gap:12px}
+.stack--lg{gap:16px}
+.row{display:flex;align-items:center;gap:12px}
+.row--between{justify-content:space-between}
+.row--end{justify-content:flex-end}
+
+/* Marca */
+.brand{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.avatar{width:64px;height:64px;border-radius:50%;background:var(--navy);display:grid;place-items:center;flex:none}
+.avatar .ic{width:36px;height:36px}
+.brand__name{font-size:var(--fs-h1);font-weight:700;color:var(--navy)}
+.brand__name--sm{font-size:24px}
+.lead{font-size:16px;margin-bottom:12px}
+.lead--tight{margin:-6px 0 0}
+.foot{text-align:center;font-size:var(--fs-cap)}
+
+/* Formularios */
+.input{width:100%;height:52px;padding:0 16px;border:1px solid var(--border);border-radius:var(--radius-sm);background:#fff;color:var(--text);font-size:16px}
+.input::placeholder{color:var(--text-2)}
+.input:focus{border-color:var(--teal)}
+.hint{font-size:var(--fs-cap);color:var(--text-2);margin-top:6px}
+.link{color:var(--teal);font-size:13px;font-weight:500}
+.link:hover{text-decoration:underline}
+.link--lg{font-size:16px;font-weight:600}
+.check{display:inline-flex;align-items:center;gap:8px;font-size:13px;cursor:pointer}
+.check input{width:18px;height:18px;accent-color:var(--navy)}
+.roles{border:0;padding:0}
+.roles legend{font-weight:600;margin-bottom:8px}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:56px;padding:0 20px;border-radius:var(--radius-sm);border:1.5px solid transparent;font-weight:600;font-size:15px;cursor:pointer;transition:filter .15s,background .15s}
+.btn--primary{background:var(--navy);color:#fff}
+.btn--teal{background:var(--teal);color:#fff}
+.btn--outline{background:#fff;color:var(--navy);border-color:var(--navy)}
+.btn--outline:hover{background:#EEF2F7}
+.btn--primary:hover,.btn--teal:hover{filter:brightness(1.1)}
+.btn--sm{width:auto;min-height:44px}
+.btn .ic{fill:var(--navy)}
+
+/* Chips */
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex}
+.chip input{position:absolute;opacity:0}
+.chip span,.chip--btn{padding:8px 16px;border-radius:999px;border:1px solid var(--border);background:#fff;font-weight:600;font-size:14px;cursor:pointer;color:var(--text)}
+.chip--btn{display:inline-flex}
+.chip input:checked+span,.chip--btn.is-active{background:var(--navy);border-color:var(--navy);color:#fff}
+.chip input:focus-visible+span{outline:3px solid var(--gold);outline-offset:2px}
+
+/* Tarjeta de búsqueda */
+.search-card{background:var(--navy);border-radius:var(--radius-lg);padding:16px;display:flex;flex-direction:column;gap:12px}
+.search-card__title{color:#fff;font-size:15px;font-weight:600}
+.search-card__msg{color:#fff;font-size:14px}
+.section-title{font-size:15px;font-weight:600;margin-bottom:12px}
+
+/* Tarjetas de ruta */
+.cards{list-style:none;padding:0;display:grid;gap:12px;grid-template-columns:1fr}
+.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 16px;display:flex;flex-direction:column;gap:6px}
+.card strong{font-size:16px}
+.card span{color:var(--text-2);font-size:14px}
+.card[hidden]{display:none}
+.card--manage{gap:14px;padding:14px 16px}
+.card__top{display:flex;justify-content:space-between;align-items:center;color:var(--text)}
+.card__top span:first-child{color:var(--text);font-size:16px}
+.card__bottom{display:flex;justify-content:space-between;align-items:center}
+.muted{color:var(--text-2)}
+.status{padding:5px 14px;border-radius:999px;font-size:13px;font-weight:600;color:#fff!important}
+.status--ok{background:var(--teal)}.status--warn{background:var(--orange)}
+.actions{display:flex;gap:6px}
+.icon-btn{background:none;border:0;border-radius:8px;padding:8px;cursor:pointer;display:grid;place-items:center}
+.icon-btn:hover{background:#EEF2F7}
+
+/* Resumen */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.stat{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px 12px;display:flex;flex-direction:column;align-items:center;gap:2px}
+.stat strong{font-size:var(--fs-h1);color:var(--navy);line-height:1.1}
+.stat span{font-size:var(--fs-cap);color:var(--text-2)}
+
+/* Paneles de reporte */
+.panel{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px}
+.panel__title{font-size:15px;font-weight:600;margin-bottom:14px}
+.bars{display:flex;align-items:flex-end;justify-content:space-around;height:150px;padding-top:8px}
+.bar{display:flex;flex-direction:column;align-items:center;gap:6px;justify-content:flex-end}
+.bar__col{width:34px;border-radius:6px;background:var(--teal);display:block}
+.bar__col--hi{background:var(--navy)}
+.bar__lbl{font-size:var(--fs-cap);color:var(--text)}
+.rank{list-style:none;padding:0;display:grid;gap:14px}
+.rank__row{display:flex;justify-content:space-between;margin-bottom:6px}
+.progress{height:8px;border-radius:4px;background:var(--border);overflow:hidden}
+.progress span{display:block;height:100%;background:var(--teal);border-radius:4px}
+.news{list-style:none;padding:0;display:grid;gap:16px}
+.news li{display:flex;align-items:center;gap:12px}
+.news div{display:flex;flex-direction:column;gap:2px;flex:1}
+.news span{font-size:var(--fs-cap);color:var(--text-2)}
+.dot{width:10px;height:10px;border-radius:50%;flex:none}
+.dot--warn{background:var(--orange)}.dot--ok{background:var(--green)}
+
+/* Diálogo */
+dialog{border:0;border-radius:var(--radius-lg);padding:24px;width:min(420px,92vw);box-shadow:0 12px 40px rgba(0,0,0,.25)}
+dialog::backdrop{background:rgba(31,58,95,.5)}
+
+/* Barra inferior */
+.bottombar{position:fixed;inset:auto 0 0 0;background:#fff;border-top:1px solid var(--border);display:flex;padding:8px 12px;z-index:5}
+.bottombar a{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:12px;color:var(--text-2)}
+.bottombar a.is-current{color:var(--navy);font-weight:700}
+
+/* ===== Adaptación por tamaño (mismos puntos de corte del diseño) ===== */
+@media (min-width:1024px){            /* PC */
+  .cards{grid-template-columns:repeat(3,1fr)}
+  .card--manage{grid-column:1/-1}
+  .cards:has(.card--manage){grid-template-columns:1fr}
+}
+@media (min-width:768px) and (max-width:1023px){   /* Tablet */
+  .container{max-width:672px}
+  .screen--center .container{max-width:480px}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .cards:has(.card--manage){grid-template-columns:1fr}
+}
+@media (max-width:767px){             /* Móvil */
+  .topbar__nav{display:none}
+  .topbar__inner{justify-content:center}
+  .screen{padding:16px 24px 96px}
+  .screen--center.is-active{align-items:flex-start;padding-top:56px}
+  .brand__name{font-size:24px}
+  .avatar{width:56px;height:56px}
+}
